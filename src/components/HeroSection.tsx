@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -52,16 +54,16 @@ const HeroSection = () => {
         {/* Main Headline */}
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            あなたの<br />
-            <span className="text-tecdia-yellow">「こうしましょう。」</span><br />
-            が世界を変える
+            {t("hero.title1")}<br />
+            <span className="text-tecdia-yellow">{t("hero.title2")}</span><br />
+            {t("hero.title3")}
           </h1>
         </div>
 
         {/* Subtitle */}
         <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <p className="text-xl md:text-2xl text-white/90 mb-12 font-medium">
-            常識に無い発想とチームパワーで世界を驚かせる。
+            {t("hero.subtitle")}
           </p>
         </div>
 
@@ -69,13 +71,13 @@ const HeroSection = () => {
         <div className={`transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button className="btn-entry text-lg px-8 py-4">
-              エントリー
+              {t("hero.cta.entry")}
             </Button>
             <Button 
               variant="outline" 
               className="text-white border-white hover:bg-white hover:text-tecdia-teal text-lg px-8 py-4"
             >
-              会社について
+              {t("hero.cta.about")}
             </Button>
           </div>
         </div>
@@ -85,12 +87,12 @@ const HeroSection = () => {
           <div className="mt-16 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-6">
             <div className="flex items-center justify-between">
               <div className="text-left">
-                <h3 className="text-tecdia-yellow font-bold text-lg mb-2">News</h3>
+                <h3 className="text-tecdia-yellow font-bold text-lg mb-2">{t("hero.news.title")}</h3>
                 <p className="text-white/90">
-                  We are now accepting applications for new graduates in the final sprint to apply for 2026!
+                  {t("hero.news.content")}
                 </p>
                 <p className="text-white/70 text-sm mt-2">
-                  If you are someone who has not yet found a company that suits you, or who has not yet found a job that satisfies you, there is still time!
+                  {t("hero.news.subtitle")}
                 </p>
               </div>
             </div>

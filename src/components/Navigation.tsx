@@ -1,23 +1,24 @@
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("JP");
+  const { language, setLanguage, t } = useLanguage();
 
   const toggleLanguage = () => {
     setLanguage(language === "JP" ? "EN" : "JP");
   };
 
   const menuItems = [
-    { label: "Home", href: "#home", jp: "ホーム" },
-    { label: "About", href: "#about", jp: "企業情報" },
-    { label: "Numbers", href: "#numbers", jp: "数字で見る" },
-    { label: "Benefits", href: "#benefits", jp: "福利厚生" },
-    { label: "Employees", href: "#employees", jp: "社員の声" },
-    { label: "Message", href: "#message", jp: "社長メッセージ" },
-    { label: "Careers", href: "#careers", jp: "採用情報" },
+    { key: "nav.home", href: "#home" },
+    { key: "nav.about", href: "#about" },
+    { key: "nav.numbers", href: "#numbers" },
+    { key: "nav.benefits", href: "#benefits" },
+    { key: "nav.employees", href: "#employees" },
+    { key: "nav.message", href: "#message" },
+    { key: "nav.careers", href: "#careers" },
   ];
 
   return (
@@ -41,7 +42,7 @@ const Navigation = () => {
                 href={item.href}
                 className="text-gray-700 hover:text-tecdia-teal transition-colors duration-300 font-medium"
               >
-                {language === "JP" ? item.jp : item.label}
+                {t(item.key)}
               </a>
             ))}
           </div>
@@ -59,9 +60,8 @@ const Navigation = () => {
               <span>{language}</span>
             </Button>
 
-            {/* ENTRY Button */}
             <Button className="btn-entry hidden md:block">
-              {language === "JP" ? "エントリー" : "ENTRY"}
+              {t("nav.entry")}
             </Button>
 
             {/* Mobile Menu Button */}
@@ -87,7 +87,7 @@ const Navigation = () => {
                   className="block text-gray-700 hover:text-tecdia-teal transition-colors duration-300 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {language === "JP" ? item.jp : item.label}
+                  {t(item.key)}
                 </a>
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-3">
@@ -101,7 +101,7 @@ const Navigation = () => {
                   {language === "JP" ? "English" : "日本語"}
                 </Button>
                 <Button className="btn-entry w-full">
-                  {language === "JP" ? "エントリー" : "ENTRY"}
+                  {t("nav.entry")}
                 </Button>
               </div>
             </div>
