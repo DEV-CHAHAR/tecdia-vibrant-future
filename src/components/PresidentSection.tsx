@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const PresidentSection = () => {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -37,7 +40,7 @@ const PresidentSection = () => {
       <div className="absolute top-8 left-8">
         <div className="flex items-center text-white/80 text-sm">
           <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-          Message from the President
+          {t("president.breadcrumb")}
         </div>
       </div>
 
@@ -87,60 +90,67 @@ const PresidentSection = () => {
             {/* Header */}
             <div className="text-center lg:text-left mb-8">
               <div className="inline-block border-2 border-white px-6 py-3 rounded-lg mb-6">
-                <h2 className="text-2xl font-bold text-white">社長メッセージ</h2>
+                <h2 className="text-2xl font-bold text-white">{t("president.title")}</h2>
               </div>
             </div>
 
             {/* Main Message */}
             <div className="space-y-6">
               <h3 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                最終面接で待ってるよ！
+                {t("president.main.message")}
               </h3>
               
               <div className="text-right mb-4">
-                <div className="text-white/80 text-sm">代表取締役</div>
-                <div className="text-white font-bold text-xl">小山真吾</div>
+                <div className="text-white/80 text-sm">{t("president.title.role")}</div>
+                <div className="text-white font-bold text-xl">{t("president.name")}</div>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <p className="text-white/90 leading-relaxed mb-4">
-                  自分の人生に挫折したくない、そういう人と一緒に仕事をしたい。
-                </p>
-                <p className="text-white/90 leading-relaxed mb-4">
-                  真の楽しさは、人と人が物事に向き合うことから生まれる。
-                </p>
-                <p className="text-white/90 leading-relaxed mb-4">
-                  それが人生の醍醐味であり、真の成長に繋がると思うしです。
-                </p>
-                <p className="text-white/90 leading-relaxed">
-                  大人になったこそに得れる自分を目指す、そんな人が大好きです。
-                </p>
+                <div className="space-y-4 text-white/90 text-lg leading-relaxed">
+                  <p>
+                    {t("president.message1")}
+                  </p>
+                  <p>
+                    {t("president.message2")}
+                  </p>
+                  <p>
+                    {t("president.message3")}
+                  </p>
+                  <p>
+                    {t("president.message4")}
+                  </p>
+                </div>
               </div>
 
               {/* Speech Bubble CTA */}
               <div className="relative mt-8">
-                <div 
-                  className="bg-red-500 text-white p-4 rounded-2xl font-bold text-lg shadow-lg transform hover:scale-105 transition-transform cursor-pointer"
+                <a 
+                  href="#" 
+                  className="block bg-red-500 text-white p-4 rounded-2xl font-bold text-lg shadow-lg transform hover:scale-105 transition-transform cursor-pointer"
                   style={{
                     borderRadius: '20px 20px 5px 20px'
                   }}
                 >
-                  詳しい本音はこちら
+                  {t("president.cta.speech")}
                   {/* Speech bubble tail */}
                   <div className="absolute bottom-0 left-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-red-500"></div>
-                </div>
+                </a>
               </div>
 
               {/* Call to Action */}
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Button className="btn-entry text-lg px-8 py-4">
-                  今すぐエントリー
+                <Button 
+                  className="btn-entry text-lg px-8 py-4"
+                  onClick={() => window.open('https://www.tecdia.com/recruit/', '_blank')}
+                >
+                  {t("president.cta.entry")}
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-tecdia-teal text-lg px-8 py-4"
+                  className="text-white border-white hover:bg-white hover:text-tecdia-teal text-lg px-8 py-4 flex items-center space-x-2"
                 >
-                  社長インタビュー
+                  <Play size={16} />
+                  <span>{t("president.cta.interview")}</span>
                 </Button>
               </div>
             </div>

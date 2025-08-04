@@ -1,7 +1,9 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Globe, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
+  const { t, language } = useLanguage();
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4">
@@ -15,31 +17,31 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 mb-4">
-              テクダイヤ株式会社<br />
+              {language === 'JP' && 'テクダイヤ株式会社'}
+              {language === 'JP' && <br />}
               Tecdia Corporation
             </p>
             <p className="text-gray-400 text-sm leading-relaxed">
-              常識に無い発想とチームパワーで世界を驚かせる。
-              Surprising the world with unconventional ideas and team power.
+              {t("footer.company.desc")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">{t("footer.links")}</h3>
             <ul className="space-y-2">
-              <li><a href="#home" className="text-gray-400 hover:text-tecdia-teal transition-colors">Home / ホーム</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-tecdia-teal transition-colors">About / 企業情報</a></li>
-              <li><a href="#numbers" className="text-gray-400 hover:text-tecdia-teal transition-colors">Numbers / 数字で見る</a></li>
-              <li><a href="#benefits" className="text-gray-400 hover:text-tecdia-teal transition-colors">Benefits / 福利厚生</a></li>
-              <li><a href="#employees" className="text-gray-400 hover:text-tecdia-teal transition-colors">Employees / 社員の声</a></li>
-              <li><a href="#message" className="text-gray-400 hover:text-tecdia-teal transition-colors">Message / 社長メッセージ</a></li>
+              <li><a href="#home" className="text-gray-400 hover:text-tecdia-teal transition-colors">{t("nav.home")}</a></li>
+              <li><a href="#about" className="text-gray-400 hover:text-tecdia-teal transition-colors">{t("nav.about")}</a></li>
+              <li><a href="#numbers" className="text-gray-400 hover:text-tecdia-teal transition-colors">{t("nav.numbers")}</a></li>
+              <li><a href="#benefits" className="text-gray-400 hover:text-tecdia-teal transition-colors">{t("nav.benefits")}</a></li>
+              <li><a href="#employees" className="text-gray-400 hover:text-tecdia-teal transition-colors">{t("nav.employees")}</a></li>
+              <li><a href="#message" className="text-gray-400 hover:text-tecdia-teal transition-colors">{t("nav.message")}</a></li>
             </ul>
           </div>
 
           {/* Business Areas */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Business Areas</h3>
+            <h3 className="text-lg font-semibold mb-4">{t("footer.business")}</h3>
             <ul className="space-y-2 text-sm">
               <li className="text-gray-400">Ceramic Application Technology</li>
               <li className="text-gray-400">5G & Data Centers</li>
@@ -51,9 +53,12 @@ const Footer = () => {
 
           {/* Contact & CTA */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Join Our Team</h3>
-            <Button className="btn-entry w-full mb-6">
-              エントリー / ENTRY
+            <h3 className="text-lg font-semibold mb-4">{t("footer.join")}</h3>
+            <Button 
+              className="btn-entry w-full mb-6"
+              onClick={() => window.open('https://www.tecdia.com/recruit/', '_blank')}
+            >
+              {t("nav.entry")}
             </Button>
             
             <div className="space-y-3 text-sm">
@@ -89,12 +94,12 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 Tecdia Corporation. All rights reserved.
+            {t("footer.rights")}
           </div>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">{t("footer.privacy")}</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">{t("footer.terms")}</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">{t("footer.cookies")}</a>
           </div>
         </div>
 
@@ -104,9 +109,11 @@ const Footer = () => {
             <span className="text-tecdia-orange">Work Hard,</span>
             <span className="text-tecdia-teal"> Play Hard</span>
           </div>
-          <p className="text-gray-400 text-sm mt-2">
-            常識に無い発想とチームパワーで世界を驚かせる
-          </p>
+          {language === 'JP' && (
+            <p className="text-gray-400 text-sm mt-2">
+              {t("footer.motto")}
+            </p>
+          )}
         </div>
       </div>
     </footer>

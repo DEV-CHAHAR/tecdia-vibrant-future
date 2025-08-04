@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Card } from "@/components/ui/card";
 import { Play, ChevronRight } from "lucide-react";
 
 const EmployeesSection = () => {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -111,7 +113,7 @@ const EmployeesSection = () => {
         {/* Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <h2 className="section-header">
-            ＼ テクダイヤで働く人の声 ／
+            {t("employees.title")}
           </h2>
         </div>
 

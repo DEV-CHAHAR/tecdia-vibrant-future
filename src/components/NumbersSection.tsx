@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Users, Calendar, Clock, TrendingUp, Award, Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const NumbersSection = () => {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [animatedNumbers, setAnimatedNumbers] = useState({
     years: 0,
@@ -83,7 +85,7 @@ const NumbersSection = () => {
       }`}
       style={{ transitionDelay: `${delay}ms`, animationDelay: `${delay / 1000}s` }}
     >
-      <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">Average age</h3>
+      <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">{t("numbers.age")}</h3>
       
       {/* Pie Chart Visual */}
       <div className="relative w-32 h-32 mx-auto mb-4">
@@ -107,7 +109,7 @@ const NumbersSection = () => {
             <div className="text-2xl font-bold text-tecdia-green">
               {animatedNumbers.avgAge}
             </div>
-            <div className="text-xs text-gray-600">average</div>
+            <div className="text-xs text-gray-600">{t("common.average")}</div>
           </div>
         </div>
       </div>
@@ -115,25 +117,25 @@ const NumbersSection = () => {
       {/* Age breakdown */}
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-600">20代</span>
+          <span className="text-sm text-gray-600">{t("common.age.20s")}</span>
           <span className="text-sm font-semibold text-tecdia-green">32%</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-600">30代</span>
+          <span className="text-sm text-gray-600">{t("common.age.30s")}</span>
           <span className="text-sm font-semibold text-tecdia-green">20%</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-600">40代</span>
+          <span className="text-sm text-gray-600">{t("common.age.40s")}</span>
           <span className="text-sm font-semibold text-tecdia-green">24%</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-600">50代+</span>
+          <span className="text-sm text-gray-600">{t("common.age.50s")}</span>
           <span className="text-sm font-semibold text-tecdia-green">24%</span>
         </div>
       </div>
       
       <div className="mt-4 text-center">
-        <p className="text-xs text-gray-600">20代の部門長もいる、実力主義の会社です！</p>
+        <p className="text-xs text-gray-600">{t("numbers.age.note")}</p>
       </div>
     </div>
   );
@@ -156,10 +158,10 @@ const NumbersSection = () => {
         {/* Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <h2 className="section-header">
-            数字で見るテクダイヤ
+            {t("numbers.title")}
           </h2>
           <p className="text-white/90 text-lg max-w-3xl mx-auto">
-            The appeal of Tecdia is revealed through figures related to various initiatives and achievements.
+            {t("numbers.subtitle")}
           </p>
         </div>
 
@@ -169,9 +171,9 @@ const NumbersSection = () => {
           <div className="lg:col-span-1">
             <StatCard
               icon={Calendar}
-              title="Years since establishment"
+              title={t("numbers.years")}
               value={animatedNumbers.years}
-              unit="years"
+              unit={t("common.years")}
               subtitle="1976 - 2025"
               delay={100}
             />
@@ -190,16 +192,16 @@ const NumbersSection = () => {
                   <Users className="text-tecdia-green w-8 h-8" />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-4">Male to female ratio</h3>
+              <h3 className="text-lg font-semibold text-gray-700 mb-4">{t("numbers.ratio")}</h3>
               <div className="flex justify-center items-center space-x-8 mb-4">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-tecdia-green mb-1">5</div>
-                  <div className="text-sm text-gray-600">男性</div>
+                  <div className="text-sm text-gray-600">{t("common.male")}</div>
                 </div>
                 <div className="text-2xl text-gray-400">:</div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-tecdia-green mb-1">5</div>
-                  <div className="text-sm text-gray-600">女性</div>
+                  <div className="text-sm text-gray-600">{t("common.female")}</div>
                 </div>
               </div>
               <div className="flex justify-center space-x-2">
@@ -217,9 +219,9 @@ const NumbersSection = () => {
           <div className="lg:col-span-1">
             <StatCard
               icon={TrendingUp}
-              title="Average length of employment"
+              title={t("numbers.employment")}
               value={animatedNumbers.employment}
-              unit="years"
+              unit={t("common.years")}
               delay={300}
             />
           </div>
@@ -233,9 +235,9 @@ const NumbersSection = () => {
           <div className="lg:col-span-1">
             <StatCard
               icon={Clock}
-              title="Average monthly overtime hours"
+              title={t("numbers.overtime")}
               value={animatedNumbers.overtime}
-              unit="hours"
+              unit={t("common.hours")}
               delay={500}
             />
           </div>
@@ -253,18 +255,18 @@ const NumbersSection = () => {
                   <Heart className="text-tecdia-green w-8 h-8" />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-4">Work-Life Balance</h3>
+              <h3 className="text-lg font-semibold text-gray-700 mb-4">{t("numbers.balance")}</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Satisfaction Rate</span>
+                  <span className="text-sm text-gray-600">{t("numbers.satisfaction")}</span>
                   <span className="text-lg font-bold text-tecdia-green">98%</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Retention Rate</span>
+                  <span className="text-sm text-gray-600">{t("numbers.retention")}</span>
                   <span className="text-lg font-bold text-tecdia-green">94%</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Employee Growth</span>
+                  <span className="text-sm text-gray-600">{t("numbers.growth")}</span>
                   <span className="text-lg font-bold text-tecdia-green">+15%</span>
                 </div>
               </div>

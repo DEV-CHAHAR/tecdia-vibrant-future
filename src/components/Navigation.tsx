@@ -31,7 +31,9 @@ const Navigation = () => {
               <span className="text-tecdia-teal">TEC</span>
               <span className="text-tecdia-orange">DIA</span>
             </div>
-            <span className="text-sm text-gray-600">テクダイヤ株式会社</span>
+            {language === 'JP' && (
+              <span className="text-sm text-gray-600">テクダイヤ株式会社</span>
+            )}
           </div>
 
           {/* Desktop Menu */}

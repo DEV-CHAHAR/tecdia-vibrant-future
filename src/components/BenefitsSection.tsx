@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Clock, Calendar, Umbrella, MapPin, Coffee, Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BenefitsSection = () => {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ const BenefitsSection = () => {
       <div className="absolute top-8 left-8">
         <div className="flex items-center text-white/80 text-sm">
           <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-          Employee system and benefits
+          {t("benefits.breadcrumb")}
         </div>
       </div>
 
@@ -67,15 +69,12 @@ const BenefitsSection = () => {
         {/* Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <h2 className="section-header">
-            ◆ 社員制度や福利厚生 ◆
+            {t("benefits.title")}
           </h2>
           <div className="max-w-4xl mx-auto mt-8 p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <h3 className="text-2xl font-bold text-tecdia-yellow mb-4">Work-life balance</h3>
+            <h3 className="text-2xl font-bold text-tecdia-yellow mb-4">{t("benefits.balance.title")}</h3>
             <p className="text-white/90 text-lg leading-relaxed">
-              A company must be a place that enriches and enriches the lives of its employees. Therefore, we want 
-              employees to not only value their work, but also their private lives, including their families and hobbies. We are 
-              actively promoting awareness-raising activities and the establishment of various systems to help employees 
-              achieve a work-life balance.
+              {t("benefits.balance.desc")}
             </p>
           </div>
         </div>
@@ -84,9 +83,9 @@ const BenefitsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           <BenefitCard
             icon={Clock}
-            title="Monthly overtime"
+            title={t("benefits.overtime.title")}
             value="4.8 hours"
-            description="We are working to reduce overtime and encourage employees to leave work on time. Our corporate culture values employees who can work efficiently and achieve high results within the allotted time."
+            description={t("benefits.overtime.desc")}
             delay={100}
           />
 
