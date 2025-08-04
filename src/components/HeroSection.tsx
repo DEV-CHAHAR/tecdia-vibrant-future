@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import tecdiaLogo from "@/assets/tecdia-logo.png";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,8 +52,17 @@ const HeroSection = () => {
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Main Headline */}
+        {/* Logo */}
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+          <img 
+            src={tecdiaLogo} 
+            alt="Tecdia Logo" 
+            className="mx-auto mb-8 h-16 md:h-20 object-contain filter drop-shadow-lg"
+          />
+        </div>
+        
+        {/* Main Headline */}
+        <div className={`transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             {t("hero.title1")}<br />
             <span className="text-tecdia-yellow">{t("hero.title2")}</span><br />
@@ -70,12 +80,16 @@ const HeroSection = () => {
         {/* CTA Buttons */}
         <div className={`transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="btn-entry text-lg px-8 py-4">
+            <Button 
+              className="btn-entry text-lg px-8 py-4"
+              onClick={() => window.open('https://www.tecdia.com/recruit/', '_blank')}
+            >
               {t("hero.cta.entry")}
             </Button>
             <Button 
               variant="outline" 
               className="text-white border-white hover:bg-white hover:text-tecdia-teal text-lg px-8 py-4"
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t("hero.cta.about")}
             </Button>

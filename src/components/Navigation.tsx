@@ -60,7 +60,10 @@ const Navigation = () => {
               <span>{language}</span>
             </Button>
 
-            <Button className="btn-entry hidden md:block">
+            <Button 
+              className="btn-entry hidden md:block"
+              onClick={() => window.open('https://www.tecdia.com/recruit/', '_blank')}
+            >
               {t("nav.entry")}
             </Button>
 
@@ -98,9 +101,12 @@ const Navigation = () => {
                   className="w-full border-tecdia-teal text-tecdia-teal hover:bg-tecdia-teal hover:text-white"
                 >
                   <Globe size={16} className="mr-2" />
-                  {language === "JP" ? "English" : "日本語"}
+                  <span>{language}</span>
                 </Button>
-                <Button className="btn-entry w-full">
+                <Button 
+                  className="btn-entry w-full"
+                  onClick={() => window.open('https://www.tecdia.com/recruit/', '_blank')}
+                >
                   {t("nav.entry")}
                 </Button>
               </div>

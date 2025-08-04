@@ -57,13 +57,15 @@ const NumbersSection = () => {
 
   const StatCard = ({ icon: Icon, title, value, unit, subtitle, delay = 0 }: any) => (
     <div 
-      className={`tecdia-card card-green p-6 text-center transform transition-all duration-1000 ${
+      className={`tecdia-card card-green card-bounce p-6 text-center transform transition-all duration-1000 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
       }`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: `${delay}ms`, animationDelay: `${delay / 1000}s` }}
     >
       <div className="flex justify-center mb-4">
-        <Icon className="text-tecdia-green w-8 h-8" />
+        <div className="bg-tecdia-green/20 w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          <Icon className="text-tecdia-green w-8 h-8" />
+        </div>
       </div>
       <h3 className="text-lg font-semibold text-gray-700 mb-2">{title}</h3>
       <div className="text-4xl font-bold text-tecdia-green mb-2 animate-count-up">
@@ -76,10 +78,10 @@ const NumbersSection = () => {
 
   const AgeDistributionCard = ({ delay = 0 }) => (
     <div 
-      className={`tecdia-card card-green p-6 transform transition-all duration-1000 ${
+      className={`tecdia-card card-green card-bounce p-6 transform transition-all duration-1000 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
       }`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: `${delay}ms`, animationDelay: `${delay / 1000}s` }}
     >
       <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">Average age</h3>
       
@@ -178,13 +180,15 @@ const NumbersSection = () => {
           {/* Male to female ratio */}
           <div className="lg:col-span-1">
             <div 
-              className={`tecdia-card card-green p-6 text-center transform transition-all duration-1000 ${
+              className={`tecdia-card card-green card-bounce p-6 text-center transform transition-all duration-1000 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
               }`}
-              style={{ transitionDelay: '200ms' }}
+              style={{ transitionDelay: '200ms', animationDelay: '0.2s' }}
             >
               <div className="flex justify-center mb-4">
-                <Users className="text-tecdia-green w-8 h-8" />
+                <div className="bg-tecdia-green/20 w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                  <Users className="text-tecdia-green w-8 h-8" />
+                </div>
               </div>
               <h3 className="text-lg font-semibold text-gray-700 mb-4">Male to female ratio</h3>
               <div className="flex justify-center items-center space-x-8 mb-4">
@@ -239,13 +243,15 @@ const NumbersSection = () => {
           {/* Work culture highlight */}
           <div className="lg:col-span-1">
             <div 
-              className={`tecdia-card card-green p-6 text-center transform transition-all duration-1000 ${
+              className={`tecdia-card card-green card-bounce p-6 text-center transform transition-all duration-1000 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
               }`}
-              style={{ transitionDelay: '600ms' }}
+              style={{ transitionDelay: '600ms', animationDelay: '0.6s' }}
             >
               <div className="flex justify-center mb-4">
-                <Heart className="text-tecdia-green w-8 h-8" />
+                <div className="bg-tecdia-green/20 w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                  <Heart className="text-tecdia-green w-8 h-8" />
+                </div>
               </div>
               <h3 className="text-lg font-semibold text-gray-700 mb-4">Work-Life Balance</h3>
               <div className="space-y-3">
@@ -269,7 +275,10 @@ const NumbersSection = () => {
 
       {/* ENTRY Button - Floating */}
       <div className="fixed bottom-8 right-8 z-50">
-        <button className="btn-entry">
+        <button 
+          className="btn-entry"
+          onClick={() => window.open('https://www.tecdia.com/recruit/', '_blank')}
+        >
           ENTRY
         </button>
       </div>
